@@ -1,0 +1,24 @@
+{
+  "name": "flight-search-app-demo",
+  "version": "1.0.0",
+  "description": "search app using mean stack ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maniR1990/flightSearchApp.git"
+  },
+  "keywords": [
+    "nodejs",
+    "angularjs",
+    "mangoDB"
+  ],
+  "author": "Manikandan R",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/maniR1990/flightSearchApp/issues"
+  },
+  "homepage": "https://github.com/maniR1990/flightSearchApp#readme"
+}
