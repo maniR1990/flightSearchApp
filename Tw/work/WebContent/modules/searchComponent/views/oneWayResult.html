@@ -1,0 +1,25 @@
+<div class="content_head"><h2>{{oneWay.travelfrom.title}} > {{oneWay.travelto.title}}</h2> </div>
+   <div class="result_wrapper">
+    <ul>
+        <li ng-repeat="item in oneWayData|rangeFilter:slider">
+          <div class="list_wrapper">
+               <div class="result_list_left">
+                <h3 class="">Rs. {{item.price}}</h3>
+               
+        <div class="">
+            <div class="flightno"><h4>Flight No:</h4> <span>{{item.flightid}}</span> </div>
+            <div class="travelfrom"><h4>from <span>{{item.travelfrom}} </span> to <span>{{item.travelto}}</span></h4></div>
+            <div class="boarding"><h4>Boarding At <span>{{item.travelfromdatetime|date:'d MM yy'}}</span> </h4></div>
+                </div>
+            </div>
+            <div class="result_list_right">
+                <img src="images/placeholder.jpeg" alt="" title="" class="img_placeholder" />
+                <button class="btn_book_flight" data-ng-click="bookFlight()">Book this Flight</button>
+            </div>
+          </div>
+         
+        </li>
+
+        
+    </ul>
+</div>

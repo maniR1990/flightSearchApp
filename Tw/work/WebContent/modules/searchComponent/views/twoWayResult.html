@@ -1,0 +1,39 @@
+<div class="content_head"><h2>{{twoWay.travelfrom.title}} > {{twoWay.travelto.title}}> {{twoWay.travelfrom.title}}</h2> </div>
+
+<div class="result_wrapper">
+    <ul>
+        <li ng-repeat="item in twoWayOnwardData|rangeFilter:slider">
+            <div class="list_wrapper"></div>
+            <div class="result_list_left">
+                <div class="result_twoway">
+                    <div class="result_twoway_dept">
+                        <h3>onward</h3>
+                        <h4> price: {{item.price}} </h4>
+                        <div class="flightno"><h4>Flight No:</h4> <span>{{item.flightid}}</span></div>
+                        <div class="two_from"><h4>from </h4> <span> "{{item.travelfrom}}" </span><h4> to </h4> <span>"{{item.travelto}}"</span></div>
+                        <div class=""><h4>Boarding At: </h4> <span>{{item.travelfromdatetime|date:'d MM yy'}}</span>
+                        </div>
+                    </div>
+                    <div class="result_twoway_arr">
+                        <h3>Return</h3>
+                        <h4> price :{{twoWayReturnData[$index].price}}</h4>
+                        <div class="flightno"><h4>Flight No:</h4><span>{{twoWayReturnData[$index].flightid}}</span></div>
+                        <div class="two_from"><h4>from</h4><span>"{{twoWayReturnData[$index].travelfrom}}"</span><h4> to </h4><span>"{{twoWayReturnData[$index].travelto}}"</span></div>
+                        <div class="boarding"><h4>Boarding At</h4><span>{{twoWayReturnData[$index].travelfromdatetime|date:'d MM yy'}}</span></div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="result_list_right">
+                <img src="images/placeholder.jpeg" alt="" title="" class="img_placeholder" />
+                <button class="btn_book_flight" data-ng-click="bookFlight()">Book this Flight</button>
+            </div>
+        </li>
+
+    </ul>
+    <div>
+
+    </div>
+
+
+

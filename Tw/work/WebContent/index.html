@@ -1,0 +1,185 @@
+<!doctype html>
+<html ng-app="shell">
+    <head>
+        <!--[if IE]>
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+        <!--[if lte IE 8 ]>
+              <html class="ie8">
+              <![endif]-->
+        <!--[if lt IE 7]>
+        <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+        <!-- css3-mediaqueries.js for IE less than 9 -->
+        <!--[if lt IE 9]>
+       <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+       <![endif]-->
+        <title>Flight Schedule</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=9">
+
+        <!-- 
+        Order of js files
+        custom css
+        library css
+        library/framework script
+        custom Script
+        -->
+        <link rel="stylesheet" href="css/style.css" />
+        <link rel="stylesheet" href="lib/jqueryUi/jquery-ui.css" />
+        <link rel="stylesheet" href="lib/autocomplete/angucomplete-alt.css" />
+        <link rel="stylesheet" href="lib/slider/rzslider.min.css" />
+
+        <script src="js/jquery-1.12.3.min.js"></script>
+        <script src="js/respond.js"></script>
+        <script src="js/main.js"></script>
+        <script src="lib/angular/angular.js"></script>
+        <script src="lib/angular/angular-route.js"></script>
+        <script src="lib/angular/angular-route-segment.js"></script>
+        <script src="lib/angular/angular.js"></script>
+        <script src="lib/jqueryUi/jquery-ui.js"></script>
+        <script src="lib/autocomplete/angucomplete-alt.js"></script>
+        <script src="lib/slider/rzslider.min.js"></script>
+
+
+
+    </head>
+
+    <body ng-controller="searchControl">   
+
+
+        <!--Layout structure follows
+            outer wrapper 
+            header 
+            leftbar
+            content Area 
+        -->
+        <!-- Outer Wrapper Start -->
+        <div class="outer_wrapper">
+            <header class="headerstyle">
+                <h1>Flight Search Engine</h1>
+            </header>
+            <!-- Left Bar Start -->
+            <div class="left_bar">
+                <div id="tabs-container">
+                    <ul class="custom_tabs">
+                        <li class="current"><a href="#tab-1">One Way</a></li>
+                        <li><a href="#tab-2">Return</a></li>
+                    </ul>
+                    <div class="tab">
+
+                        <div id="tab-1" class="tab-content">
+                            <p>
+                            <angucomplete-alt id="ex1"
+                                              placeholder="Enter Origin City"
+                                              pause="1"
+                                              selected-object="oneWayFrom"
+                                              local-data="places"
+                                              search-fields="title"
+                                              title-field="title"
+                                              minlength="1"
+                                              input-class="custom_input_text"/>
+                            </p>
+                            <p>
+                            <angucomplete-alt id="ex2"
+                                              placeholder="Enter Destination City"
+                                              pause="1"
+                                              selected-object="oneWayTo"
+                                              local-data="places"
+                                              search-fields="title"
+                                              title-field="title"
+                                              minlength="1"
+                                              input-class="custom_input_text"/>
+                            </p>
+                            <p><input type="text" date-ctrl  date-obj="oneWay.depatureDate" class="custom_input_text custom_date_picker" placeholder="Depature Date" ></p>
+                            <p>
+                                <select  class="custom_input_text" data-ng-model="oneWay.passengerCount"  placeholder="no of passengers" >							
+                                    <option ng-repeat="passenger in passenger">{{passenger}}</option>					
+                                </select>
+                            </p>
+                            <button  id="btn_search_flight" class="btn_book_flight"  data-ng-click="oneWayForm()">Search</button>
+
+                        </div>
+                        <div id="tab-2" class="tab-content">
+
+                            <p>
+                            <angucomplete-alt id="ex3"
+                                              placeholder="Enter Origin City"
+                                              pause="1"
+                                              selected-object="twoWayFrom"
+                                              local-data="places"
+                                              search-fields="title"
+                                              title-field="title"
+                                              minlength="1"
+                                              input-class="custom_input_text"/>
+
+                            </p>
+                            <p>
+                            <angucomplete-alt id="ex4"
+                                              placeholder="Enter Destination City"
+                                              pause="1"
+                                              selected-object="twoWayTo"
+                                              local-data="places"
+                                              search-fields="title"
+                                              title-field="title"
+                                              minlength="1"
+                                              input-class="custom_input_text"/>
+
+                            </p>
+                            <p><input type="text"  date-ctrl date-obj="twoWay.depatureDate" class="custom_input_text custom_date_picker" placeholder="Depature Date" ></p>
+                            <p><input type="text"  date-ctrl date-obj="twoWay.returnDate"class="custom_input_text custom_date_picker" placeholder="Return Date"></p>
+                            <p>
+                                <select  class="custom_input_text" data-ng-model="twoWay.passengerCount"  placeholder="no of passengers" >							
+                                    <option ng-repeat="passenger in passenger">{{passenger}}</option>					
+                                </select>
+                            </p>
+                            <button id="btn_search_flight" class="btn_book_flight" data-ng-click="twoWayForm()">Search</button>
+
+                        </div>
+
+
+                    </div>
+                </div>
+                <div class="range_Slider">
+                    <div class="range_slider_header">
+                        <h4>Filter By Price</h4>
+                    </div>
+                   <rzslider rz-slider-model="slider.minValue"
+          						rz-slider-high="slider.maxValue"
+          						rz-slider-options="slider.options"></rzslider>
+                </div>
+            </div>
+            <!-- Left Bar End -->
+
+            <!-- Content Area Start -->
+            <div class="content_area" app-view-segment="0">              
+
+            </div>
+            <!-- Content Area End -->
+        </div>
+        <!-- Outer Wrapper End -->
+
+        <!-- 
+            Order of js files
+            module
+            run
+            models
+            services
+            messages
+            handlers
+            factories
+            filters
+            directives
+            controllers
+        -->
+
+        <script src="modules/searchComponent/module.js"></script>      
+        <script src="modules/searchComponent/services/navigationService.js"></script>
+        <script src="modules/searchComponent/services/httpservices.js"></script>
+        <script src="modules/searchComponent/filter/pricefilter.js"></script>
+        <script src="modules/searchComponent/directives/dateControl.js"></script>
+        <script src="modules/searchComponent/directives/slider.js"></script>
+        <script src="modules/searchComponent/controller/searchController.js"></script>
+
+    </body>
+</html>
